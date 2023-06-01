@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>La boutique de Django sport</title>
+</head>
+<body>
+<a href="{% url 'index' %}">
+    <h1>La boutique Djangosport</h1>
+</a>
+{% if not user.is_authenticated %}
+    <a href="{% url 'sign up' %}">S'inscrire</a>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
