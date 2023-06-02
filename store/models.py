@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.db import models
+
+from projetSport.settings import AUTH_USER_MODEL
+
 # Create your views here.
 """
 Product
@@ -21,3 +24,12 @@ class Product(models.Model):
 
     def __str__(self):
         return self.nom
+
+class Order(models.Model):
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete= models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    ordered = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.product.name} ({self.quantity})"
